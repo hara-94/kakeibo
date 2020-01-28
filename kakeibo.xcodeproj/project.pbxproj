@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		327B925323DC084A007C5511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B925223DC084A007C5511 /* AppDelegate.swift */; };
+		327B925523DC084A007C5511 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B925423DC084A007C5511 /* SceneDelegate.swift */; };
+		327B925A23DC084A007C5511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327B925823DC084A007C5511 /* Main.storyboard */; };
+		327B925C23DC0850007C5511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 327B925B23DC0850007C5511 /* Assets.xcassets */; };
+		327B925F23DC0850007C5511 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 327B925D23DC0850007C5511 /* LaunchScreen.storyboard */; };
+		327B926C23DC0A97007C5511 /* DateListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B926A23DC0A97007C5511 /* DateListTableViewCell.swift */; };
+		327B926D23DC0A97007C5511 /* DateListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327B926B23DC0A97007C5511 /* DateListTableViewCell.xib */; };
+		327B926F23DC1081007C5511 /* DateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B926E23DC1081007C5511 /* DateListViewController.swift */; };
+		327B927123DC122B007C5511 /* AddDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B927023DC122B007C5511 /* AddDateViewController.swift */; };
+		327B927323DC1251007C5511 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B927223DC1251007C5511 /* ContainerViewController.swift */; };
+		327B927523DC2F94007C5511 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B927423DC2F94007C5511 /* Account.swift */; };
+		327B927723DC30F1007C5511 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B927623DC30F1007C5511 /* Function.swift */; };
+		327B927923DD4ABC007C5511 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B927823DD4ABC007C5511 /* TabBarViewController.swift */; };
+		327B927B23DD4C0B007C5511 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B927A23DD4C0B007C5511 /* CategoryListViewController.swift */; };
+		327B928123DD5611007C5511 /* ManagePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B928023DD5611007C5511 /* ManagePaymentViewController.swift */; };
+		327B928323DD566D007C5511 /* CheckPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B928223DD566D007C5511 /* CheckPaymentViewController.swift */; };
+		327B928523DEF95E007C5511 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B928423DEF95E007C5511 /* Payment.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		327B924F23DC084A007C5511 /* kakeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kakeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		327B925223DC084A007C5511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		327B925423DC084A007C5511 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		327B925923DC084A007C5511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		327B925B23DC0850007C5511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		327B925E23DC0850007C5511 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		327B926023DC0850007C5511 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		327B926A23DC0A97007C5511 /* DateListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateListTableViewCell.swift; sourceTree = "<group>"; };
+		327B926B23DC0A97007C5511 /* DateListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateListTableViewCell.xib; sourceTree = "<group>"; };
+		327B926E23DC1081007C5511 /* DateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateListViewController.swift; sourceTree = "<group>"; };
+		327B927023DC122B007C5511 /* AddDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDateViewController.swift; sourceTree = "<group>"; };
+		327B927223DC1251007C5511 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		327B927423DC2F94007C5511 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		327B927623DC30F1007C5511 /* Function.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		327B927823DD4ABC007C5511 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		327B927A23DD4C0B007C5511 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		327B928023DD5611007C5511 /* ManagePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagePaymentViewController.swift; sourceTree = "<group>"; };
+		327B928223DD566D007C5511 /* CheckPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPaymentViewController.swift; sourceTree = "<group>"; };
+		327B928423DEF95E007C5511 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		327B924C23DC084A007C5511 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		327B924623DC084A007C5511 = {
+			isa = PBXGroup;
+			children = (
+				327B925123DC084A007C5511 /* kakeibo */,
+				327B925023DC084A007C5511 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		327B925023DC084A007C5511 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				327B924F23DC084A007C5511 /* kakeibo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		327B925123DC084A007C5511 /* kakeibo */ = {
+			isa = PBXGroup;
+			children = (
+				327B926623DC087F007C5511 /* Models */,
+				327B926723DC0884007C5511 /* Controllers */,
+				327B925223DC084A007C5511 /* AppDelegate.swift */,
+				327B925423DC084A007C5511 /* SceneDelegate.swift */,
+				327B925823DC084A007C5511 /* Main.storyboard */,
+				327B925B23DC0850007C5511 /* Assets.xcassets */,
+				327B925D23DC0850007C5511 /* LaunchScreen.storyboard */,
+				327B926023DC0850007C5511 /* Info.plist */,
+			);
+			path = kakeibo;
+			sourceTree = "<group>";
+		};
+		327B926623DC087F007C5511 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				327B926A23DC0A97007C5511 /* DateListTableViewCell.swift */,
+				327B926B23DC0A97007C5511 /* DateListTableViewCell.xib */,
+				327B927423DC2F94007C5511 /* Account.swift */,
+				327B927623DC30F1007C5511 /* Function.swift */,
+				327B928423DEF95E007C5511 /* Payment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		327B926723DC0884007C5511 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				327B926E23DC1081007C5511 /* DateListViewController.swift */,
+				327B927023DC122B007C5511 /* AddDateViewController.swift */,
+				327B927223DC1251007C5511 /* ContainerViewController.swift */,
+				327B927823DD4ABC007C5511 /* TabBarViewController.swift */,
+				327B927A23DD4C0B007C5511 /* CategoryListViewController.swift */,
+				327B928023DD5611007C5511 /* ManagePaymentViewController.swift */,
+				327B928223DD566D007C5511 /* CheckPaymentViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		327B924E23DC084A007C5511 /* kakeibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 327B926323DC0850007C5511 /* Build configuration list for PBXNativeTarget "kakeibo" */;
+			buildPhases = (
+				327B924B23DC084A007C5511 /* Sources */,
+				327B924C23DC084A007C5511 /* Frameworks */,
+				327B924D23DC084A007C5511 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kakeibo;
+			productName = kakeibo;
+			productReference = 327B924F23DC084A007C5511 /* kakeibo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		327B924723DC084A007C5511 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "原ひかる";
+				TargetAttributes = {
+					327B924E23DC084A007C5511 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 327B924A23DC084A007C5511 /* Build configuration list for PBXProject "kakeibo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 327B924623DC084A007C5511;
+			productRefGroup = 327B925023DC084A007C5511 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				327B924E23DC084A007C5511 /* kakeibo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		327B924D23DC084A007C5511 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				327B925F23DC0850007C5511 /* LaunchScreen.storyboard in Resources */,
+				327B925C23DC0850007C5511 /* Assets.xcassets in Resources */,
+				327B925A23DC084A007C5511 /* Main.storyboard in Resources */,
+				327B926D23DC0A97007C5511 /* DateListTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		327B924B23DC084A007C5511 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				327B927B23DD4C0B007C5511 /* CategoryListViewController.swift in Sources */,
+				327B926F23DC1081007C5511 /* DateListViewController.swift in Sources */,
+				327B927123DC122B007C5511 /* AddDateViewController.swift in Sources */,
+				327B925323DC084A007C5511 /* AppDelegate.swift in Sources */,
+				327B925523DC084A007C5511 /* SceneDelegate.swift in Sources */,
+				327B927923DD4ABC007C5511 /* TabBarViewController.swift in Sources */,
+				327B928123DD5611007C5511 /* ManagePaymentViewController.swift in Sources */,
+				327B927323DC1251007C5511 /* ContainerViewController.swift in Sources */,
+				327B928523DEF95E007C5511 /* Payment.swift in Sources */,
+				327B928323DD566D007C5511 /* CheckPaymentViewController.swift in Sources */,
+				327B926C23DC0A97007C5511 /* DateListTableViewCell.swift in Sources */,
+				327B927523DC2F94007C5511 /* Account.swift in Sources */,
+				327B927723DC30F1007C5511 /* Function.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		327B925823DC084A007C5511 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				327B925923DC084A007C5511 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		327B925D23DC0850007C5511 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				327B925E23DC0850007C5511 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		327B926123DC0850007C5511 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		327B926223DC0850007C5511 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		327B926423DC0850007C5511 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R6FXVG8497;
+				INFOPLIST_FILE = kakeibo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.stip.kakeibo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		327B926523DC0850007C5511 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R6FXVG8497;
+				INFOPLIST_FILE = kakeibo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.stip.kakeibo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		327B924A23DC084A007C5511 /* Build configuration list for PBXProject "kakeibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				327B926123DC0850007C5511 /* Debug */,
+				327B926223DC0850007C5511 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		327B926323DC0850007C5511 /* Build configuration list for PBXNativeTarget "kakeibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				327B926423DC0850007C5511 /* Debug */,
+				327B926523DC0850007C5511 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 327B924723DC084A007C5511 /* Project object */;
+}
