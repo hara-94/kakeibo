@@ -69,7 +69,7 @@ class AddDateViewController: UIViewController {
                         let account = Account(startDate: start, endDate: end, expenseCategory: [String](), incomeCategory: [String](), expensePayments: [Payment](), incomePayments: [Payment]())
                         ADAccounts.append(account)
                         Function.setAccounts(object: ADAccounts)
-                        dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                     } else {
                         //endが空文字の場合
                         let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "終了時期を設定してください", preferredStyle: .alert)

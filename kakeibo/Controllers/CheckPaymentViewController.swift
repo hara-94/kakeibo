@@ -137,6 +137,7 @@ extension CheckPaymentViewController: UICollectionViewDelegate, UICollectionView
             cell.moneyLabel.text = "+" + String(incomeTotalMoney) + "円"
             cell.moneyLabel.textColor = UIColor(red: 0/255, green: 100/255, blue: 255/255, alpha: 1)
         } else {
+            cell.titleLabel.text = "収支"
             cell.moneyLabel.text = String(incomeTotalMoney - expenseTotalMoney) + "円"
         }
         return cell

@@ -40,7 +40,7 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "clCell", for: indexPath) as! CategoryListCollectionViewCell
         cell.layer.borderWidth = 1
-        cell.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1).cgColor
+        cell.layer.borderColor = Function.buttonColor().cgColor
         cell.layer.cornerRadius = 10
         cell.titleLabel.text = MICategories[indexPath.row]
         cell.titleLabel.textColor = Function.buttonColor()
@@ -62,6 +62,7 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
                     MICategories = MIAccounts[MIRowNumber].incomeCategory
                     incomeText.text = ""
                     collectionView.reloadData()
+                    incomeText.endEditing(true)
                 }
             }
         }

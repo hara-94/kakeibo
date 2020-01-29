@@ -271,6 +271,8 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
                                 Function.setAccounts(object: MPAccounts)
                                 expenseTextField.text = ""
                                 expenseCategoryTextField.text = ""
+                                expenseTextField.endEditing(true)
+                                expenseCategoryTextField.endEditing(true)
                             } else {
                                 //有効な数字ではない場合
                                 let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "有効な数字を入力してください", preferredStyle: .alert)
@@ -320,6 +322,8 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
                                 Function.setAccounts(object: MPAccounts)
                                 incomeTextField.text = ""
                                 incomeCategoryTextField.text = ""
+                                incomeTextField.endEditing(true)
+                                incomeCategoryTextField.endEditing(true)
                             } else {
                                 //有効な数字ではない場合
                                 let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "有効な数字を入力してください", preferredStyle: .alert)
