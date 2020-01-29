@@ -1,24 +1,21 @@
 //
-//  CategoryListViewController.swift
+//  ManageIncomeViewController.swift
 //  kakeibo
 //
-//  Created by 原ひかる on 2020/01/26.
+//  Created by 原ひかる on 2020/01/28.
 //  Copyright © 2020 原ひかる. All rights reserved.
 //
 
 import UIKit
 
-class CategoryListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
-    
+    @IBOutlet weak var incomeText: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    @IBOutlet weak var categoryText: UITextField!
-    
-    var CLAccounts = [Account]()
-    var CLRowNumber: Int = 2
-    var CLCategories = [String]()
+    var MIAccounts = [Account]()
+    var MIRowNumber: Int = 0
+    var MICategories = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,44 +31,40 @@ class CategoryListViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        CLAccounts = Function.getAccounts()
-        
-        CLCategories.removeAll()
-        CLCategories = CLAccounts[CLRowNumber].expenseCategory
-        collectionView.reloadData()
+        MIAccounts = Function.getAccounts()
+        MICategories = MIAccounts[MIRowNumber].incomeCategory
     }
-    
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CLCategories.count
+        return MICategories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "clCell", for: indexPath) as! CategoryListCollectionViewCell
         cell.titleLabel.textColor = .white
-        cell.titleLabel.text = CLCategories[indexPath.row]
         cell.backgroundColor = Function.cellColor()
+        cell.titleLabel.text = MICategories[indexPath.row]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath)-> CGSize {
         let cellSize = self.view.bounds.width / 3 - 20
         return CGSize(width: cellSize, height: cellSize)
     }
     
     
     @IBAction func addButtonOnPressed(_ sender: Any) {
-        if let category = categoryText.text {
-            if category != "" {
-                if !CLCategories.contains(category) {
-                    CLAccounts[CLRowNumber].expenseCategory.append(category)
-                    Function.setAccounts(object: CLAccounts)
-                    CLCategories = CLAccounts[CLRowNumber].expenseCategory
+        if let income = incomeText.text {
+            if income != "" {
+                if !MICategories.contains(income) {
+                    MIAccounts[MIRowNumber].incomeCategory.append(income)
+                    Function.setAccounts(object: MIAccounts)
+                    MICategories = MIAccounts[MIRowNumber].incomeCategory
+                    incomeText.text = ""
                     collectionView.reloadData()
-                } else {
-                    //登録済みの場合
                 }
             }
         }
     }
+    
 }

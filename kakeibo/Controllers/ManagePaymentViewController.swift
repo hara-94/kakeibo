@@ -8,13 +8,19 @@
 
 import UIKit
 
-class ManagePaymentViewController: UIViewController {
+class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
     var MPAccounts = [Account]()
     var MPRowNumber: Int = 0
+    var MPExpenseCategories = [String]()
+    var MPIncomeCategories = [String]()
+    var expensePickerView = UIPickerView()
+    var incomePickerView = UIPickerView()
     let expenseTextField = UITextField()
     let incomeTextField = UITextField()
     let expenseCategoryTextField = UITextField()
@@ -26,7 +32,29 @@ class ManagePaymentViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
-        contentView.backgroundColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 0.7/1)
+//        contentView.backgroundColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 0.7/1)
+        contentView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5/1)
+        
+        
+        expensePickerView.delegate = self
+        expensePickerView.dataSource = self
+        
+        
+        incomePickerView.delegate = self
+        incomePickerView.dataSource = self
+        
+        let expenseToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+        let expenseDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(expenseDone))
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        expenseToolBar.setItems([spaceItem, expenseDoneItem], animated: true)
+        expenseCategoryTextField.inputView = expensePickerView
+        expenseCategoryTextField.inputAccessoryView = expenseToolBar
+        
+        let incomeToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+        let incomeDoneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(incomeDone))
+        incomeToolBar.setItems([spaceItem, incomeDoneItem], animated: true)
+        incomeCategoryTextField.inputView = incomePickerView
+        incomeCategoryTextField.inputAccessoryView = incomeToolBar
         
         let expenseLabel = UILabel()
         expenseLabel.text = "支出"
@@ -47,23 +75,23 @@ class ManagePaymentViewController: UIViewController {
         incomeLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
         incomeLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -130).isActive = true
         
-        
-        contentView.addSubview(expenseTextField)
-        expenseTextField.translatesAutoresizingMaskIntoConstraints = false
         expenseTextField.backgroundColor = .white
-        expenseTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7).isActive = true
-        expenseTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         expenseTextField.textAlignment = .right
         expenseTextField.borderStyle = .roundedRect
-        
-        
-        contentView.addSubview(incomeTextField)
-        incomeTextField.translatesAutoresizingMaskIntoConstraints = false
+        expenseTextField.keyboardType = .numberPad
+        contentView.addSubview(expenseTextField)
+        expenseTextField.translatesAutoresizingMaskIntoConstraints = false
+        expenseTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7).isActive = true
+        expenseTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+                
         incomeTextField.backgroundColor = .white
-        incomeTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7).isActive = true
-        incomeTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         incomeTextField.textAlignment = .right
         incomeTextField.borderStyle = .roundedRect
+        incomeTextField.keyboardType = .numberPad
+        contentView.addSubview(incomeTextField)
+        incomeTextField.translatesAutoresizingMaskIntoConstraints = false
+        incomeTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7).isActive = true
+        incomeTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         let expenseStackView = UIStackView()
         contentView.addSubview(expenseStackView)
@@ -153,7 +181,7 @@ class ManagePaymentViewController: UIViewController {
         
         let expenseButton = UIButton()
         expenseButton.setTitle("支出を入力する", for: .normal)
-        expenseButton.backgroundColor = UIColor(red: 244/255, green: 178/255, blue: 81/255, alpha: 1)
+        expenseButton.backgroundColor = Function.buttonColor()
         expenseButton.layer.cornerRadius = 12
         expenseButton.addTarget(self, action: #selector(expenseButtonOnPressed(_:)), for: .touchUpInside)
         contentView.addSubview(expenseButton)
@@ -164,7 +192,7 @@ class ManagePaymentViewController: UIViewController {
         
         let incomeButton = UIButton()
         incomeButton.setTitle("収入を入力する", for: .normal)
-        incomeButton.backgroundColor = UIColor(red: 244/255, green: 178/255, blue: 81/255, alpha: 1)
+        incomeButton.backgroundColor = Function.buttonColor()
         incomeButton.layer.cornerRadius = 12
         incomeButton.addTarget(self, action: #selector(incomeButtonOnPressed(_:)), for: .touchUpInside)
         contentView.addSubview(incomeButton)
@@ -178,8 +206,53 @@ class ManagePaymentViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         MPAccounts = Function.getAccounts()
-        print(MPAccounts[MPRowNumber].expensePayments)
-        print(MPAccounts[MPRowNumber].incomePayments)
+        MPExpenseCategories = MPAccounts[MPRowNumber].expenseCategory
+        MPIncomeCategories = MPAccounts[MPRowNumber].incomeCategory
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView {
+        case expensePickerView:
+            return MPExpenseCategories.count
+        case incomePickerView:
+            return MPIncomeCategories.count
+        default:
+            fatalError()
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView {
+        case expensePickerView:
+            return MPExpenseCategories[row]
+        case incomePickerView:
+            return MPIncomeCategories[row]
+        default:
+            fatalError()
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView {
+        case expensePickerView:
+            self.expenseCategoryTextField.text = MPExpenseCategories[row]
+        case incomePickerView:
+            self.incomeCategoryTextField.text = MPIncomeCategories[row]
+        default:
+            fatalError()
+        }
+    }
+    
+    @objc func expenseDone() {
+        expenseCategoryTextField.endEditing(true)
+    }
+    
+    @objc func incomeDone() {
+        incomeCategoryTextField.endEditing(true)
     }
     
     @objc func expenseButtonOnPressed(_ sender: Any) {
@@ -187,21 +260,29 @@ class ManagePaymentViewController: UIViewController {
             if let expenseCategory = expenseCategoryTextField.text {
                 if expenseText != "" {
                     if expenseCategory != "" {
-                        if Int(expenseText) != nil {
-                            let payment = Payment(content: expenseCategory, money: expenseText)
-                            print(payment.content)
-                            print(payment.money)
-                            MPAccounts[MPRowNumber].expensePayments.append(payment)
-                            Function.setAccounts(object: MPAccounts)
-                            expenseTextField.text = ""
-                            expenseCategoryTextField.text = ""
+                        if MPExpenseCategories.contains(expenseCategory) {
+                            if Int(expenseText) != nil {
+                                let payment = Payment(content: expenseCategory, money: expenseText)
+                                MPAccounts[MPRowNumber].expensePayments.append(payment)
+                                Function.setAccounts(object: MPAccounts)
+                                expenseTextField.text = ""
+                                expenseCategoryTextField.text = ""
+                            } else {
+                                //有効な数字ではない場合
+                                let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "有効な数字を入力してください", preferredStyle: .alert)
+                                let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                alert.addAction(OKAction)
+                                present(alert, animated: true) {
+                                    self.expenseTextField.text = ""
+                                }
+                            }
                         } else {
-                            //有効な数字ではない場合
-                            let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "有効な数字を入力してください", preferredStyle: .alert)
+                            //登録していないカテゴリーの場合
+                            let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "登録されていないカテゴリーです", preferredStyle: .alert)
                             let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                             alert.addAction(OKAction)
                             present(alert, animated: true) {
-                                self.expenseTextField.text = ""
+                                self.expenseCategoryTextField.text = ""
                             }
                         }
                     } else {
@@ -228,19 +309,29 @@ class ManagePaymentViewController: UIViewController {
             if let incomeCategory = incomeCategoryTextField.text {
                 if incomeText != "" {
                     if incomeCategory != "" {
-                        if Int(incomeText) != nil {
-                            let payment = Payment(content: incomeText, money: incomeText)
-                            MPAccounts[MPRowNumber].incomePayments.append(payment)
-                            Function.setAccounts(object: MPAccounts)
-                            incomeTextField.text = ""
-                            incomeCategoryTextField.text = ""
+                        if MPIncomeCategories.contains(incomeCategory) {
+                            if Int(incomeText) != nil {
+                                let payment = Payment(content: incomeCategory, money: incomeText)
+                                MPAccounts[MPRowNumber].incomePayments.append(payment)
+                                Function.setAccounts(object: MPAccounts)
+                                incomeTextField.text = ""
+                                incomeCategoryTextField.text = ""
+                            } else {
+                                //有効な数字ではない場合
+                                let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "有効な数字を入力してください", preferredStyle: .alert)
+                                let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                                alert.addAction(OKAction)
+                                present(alert, animated: true) {
+                                    self.incomeTextField.text = ""
+                                }
+                            }
                         } else {
-                            //有効な数字ではない場合
-                            let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "有効な数字を入力してください", preferredStyle: .alert)
+                            //登録していないカテゴリーの場合
+                            let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "登録されていないカテゴリーです", preferredStyle: .alert)
                             let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                             alert.addAction(OKAction)
                             present(alert, animated: true) {
-                                self.incomeTextField.text = ""
+                                self.incomeCategoryTextField.text = ""
                             }
                         }
                     } else {
@@ -258,7 +349,6 @@ class ManagePaymentViewController: UIViewController {
                     present(alert, animated: true, completion: nil)
                 }
             }
-            
         }
     }
 

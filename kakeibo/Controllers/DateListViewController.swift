@@ -17,8 +17,8 @@ class DateListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
-        tableView.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
+        self.view.backgroundColor = Function.viewColor()
+        tableView.backgroundColor = Function.viewColor()
         tableView.separatorColor = .white
         tableView.register(UINib(nibName: "DateListTableViewCell", bundle: nil), forCellReuseIdentifier: "DLcell")
         //viewdidloadここまで
@@ -44,7 +44,7 @@ class DateListViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.endLabel.text = DLAccounts[indexPath.row].endDate
         cell.endLabel.textColor = .white
         cell.moneyLabel.textColor = .white
-        cell.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
+        cell.backgroundColor = Function.viewColor()
         return cell
     }
     

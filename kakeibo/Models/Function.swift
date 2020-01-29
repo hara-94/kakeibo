@@ -6,7 +6,7 @@
 //  Copyright © 2020 原ひかる. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Function {
     
@@ -24,6 +24,18 @@ class Function {
         if let encodedData = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: false) {
             UserDefaults.standard.set(encodedData, forKey: "accountsData")
         }
+    }
+    
+    class func viewColor() -> UIColor {
+        return UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
+    }
+    
+    class func cellColor() -> UIColor {
+        return UIColor(red: 0/255, green: 0/255, blue: 30/255, alpha: 1)
+    }
+    
+    class func buttonColor() -> UIColor {
+        return UIColor(red: 244/255, green: 178/255, blue: 81/255, alpha: 1)
     }
     
 }

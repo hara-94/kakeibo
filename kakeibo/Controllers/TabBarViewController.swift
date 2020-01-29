@@ -19,10 +19,13 @@ class TabBarViewController: UITabBarController {
         if let mpVC = viewControllers![0] as? ManagePaymentViewController {
             mpVC.MPRowNumber = TBRowNumber
         }
-        if let clVC = viewControllers![1] as? CategoryListViewController {
-            clVC.CLRowNumber = TBRowNumber
+        if let meVC = viewControllers![1] as? ManageExpenseViewController {
+            meVC.MERowNumber = TBRowNumber
         }
-        if let cpVC = viewControllers![2] as? CheckPaymentViewController {
+        if let miVC = viewControllers![2] as? ManageIncomeViewController {
+            miVC.MIRowNumber = TBRowNumber
+        }
+        if let cpVC = viewControllers![3] as? CheckPaymentViewController {
             cpVC.CPRowNumber = TBRowNumber
         }
     }

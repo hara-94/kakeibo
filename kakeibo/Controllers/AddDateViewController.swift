@@ -35,7 +35,6 @@ class AddDateViewController: UIViewController {
         //登録済みのAccountsの読み込み
         ADAccounts = Function.getAccounts()
         //viewdidloadここまで
-        print("AD: view did load")
     }
     
     
@@ -63,7 +62,7 @@ class AddDateViewController: UIViewController {
             if let end = endText.text {
                 if start != "" {
                     if end != "" {
-                        let account = Account(startDate: start, endDate: end, expensePayments: [Payment](), incomePayments: [Payment]())
+                        let account = Account(startDate: start, endDate: end, expenseCategory: [String](), incomeCategory: [String](), expensePayments: [Payment](), incomePayments: [Payment]())
                         ADAccounts.append(account)
                         Function.setAccounts(object: ADAccounts)
                         dismiss(animated: true, completion: nil)
