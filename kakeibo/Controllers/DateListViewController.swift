@@ -11,15 +11,16 @@ import UIKit
 class DateListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
     var DLAccounts = [Account]()
     var DLRowNumber: Int = 0
+    var DLExpenseTotalMoney: Int = 0
+    var DLIncomeTotalMoney: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = Function.viewColor()
-        tableView.backgroundColor = Function.viewColor()
-        tableView.separatorColor = .white
+        addButton.layer.cornerRadius = 8
         tableView.register(UINib(nibName: "DateListTableViewCell", bundle: nil), forCellReuseIdentifier: "DLcell")
         //viewdidloadここまで
     }
@@ -40,11 +41,26 @@ class DateListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DLcell", for: indexPath) as! DateListTableViewCell
         cell.startLabel.text = DLAccounts[indexPath.row].startDate
-        cell.startLabel.textColor = .white
+//        cell.startLabel.textColor = .white
         cell.endLabel.text = DLAccounts[indexPath.row].endDate
-        cell.endLabel.textColor = .white
-        cell.moneyLabel.textColor = .white
-        cell.backgroundColor = Function.viewColor()
+//        cell.endLabel.textColor = .white
+//        cell.moneyLabel.textColor = .white
+//        cell.backgroundColor = Function.viewColor()
+        DLExpenseTotalMoney = 0
+        DLIncomeTotalMoney = 0
+        for payment in DLAccounts[indexPath.row].expensePayments {
+            guard let intMoney = Int(payment.money) else {
+                fatalError()
+            }
+            DLExpenseTotalMoney = DLExpenseTotalMoney + intMoney
+        }
+        for payment in DLAccounts[indexPath.row].incomePayments {
+            guard let intMoney = Int(payment.money) else {
+                fatalError()
+            }
+            DLIncomeTotalMoney = DLIncomeTotalMoney + intMoney
+        }
+        cell.moneyLabel.text = String(DLIncomeTotalMoney - DLExpenseTotalMoney) + "円"
         return cell
     }
     
@@ -71,4 +87,9 @@ class DateListViewController: UIViewController, UITableViewDataSource, UITableVi
             nextVC.TBRowNumber = sender as! Int
         }
     }
+    
+    @IBAction func addButtonOnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "toAddDateVC", sender: nil)
+    }
+    
 }

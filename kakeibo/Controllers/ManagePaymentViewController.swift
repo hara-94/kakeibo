@@ -29,12 +29,12 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
+//        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
-//        contentView.backgroundColor = UIColor(red: 107/255, green: 107/255, blue: 107/255, alpha: 0.7/1)
-        contentView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5/1)
-        
+        scrollView.layer.cornerRadius = 20
+        scrollView.layer.borderColor = Function.buttonColor().cgColor
+        scrollView.layer.borderWidth = 2
         
         expensePickerView.delegate = self
         expensePickerView.dataSource = self
@@ -58,15 +58,19 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let expenseLabel = UILabel()
         expenseLabel.text = "支出"
-        expenseLabel.textColor = .white
+        expenseLabel.textAlignment = .center
+        expenseLabel.layer.borderWidth = 2
+        expenseLabel.layer.borderColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1).cgColor
         contentView.addSubview(expenseLabel)
         expenseLabel.translatesAutoresizingMaskIntoConstraints = false
+        expenseLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        expenseLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         expenseLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         expenseLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -130).isActive = true
         
         let incomeLabel = UILabel()
         incomeLabel.text = "収入"
-        incomeLabel.textColor = .white
+//        incomeLabel.textColor = .white
         incomeLabel.textAlignment = .center
         incomeLabel.sizeToFit()
         contentView.addSubview(incomeLabel)
@@ -75,7 +79,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
         incomeLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -130).isActive = true
         
-        expenseTextField.backgroundColor = .white
+//        expenseTextField.backgroundColor = .white
         expenseTextField.textAlignment = .right
         expenseTextField.borderStyle = .roundedRect
         expenseTextField.keyboardType = .numberPad
@@ -84,7 +88,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7).isActive = true
         expenseTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
                 
-        incomeTextField.backgroundColor = .white
+//        incomeTextField.backgroundColor = .white
         incomeTextField.textAlignment = .right
         incomeTextField.borderStyle = .roundedRect
         incomeTextField.keyboardType = .numberPad
@@ -113,21 +117,21 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
 
         let expenseYenLabel = UILabel()
         expenseYenLabel.text = "円"
-        expenseYenLabel.textColor = .white
+//        expenseYenLabel.textColor = .white
         expenseYenLabel.sizeToFit()
         let expenseYenLabelWidth = expenseYenLabel.frame.width
         expenseStackView.addArrangedSubview(expenseYenLabel)
 
         let incomeYenLabel = UILabel()
         incomeYenLabel.text = "円"
-        incomeYenLabel.textColor = .white
+//        incomeYenLabel.textColor = .white
         incomeYenLabel.sizeToFit()
         let incomeYenLabelWidth = incomeYenLabel.frame.width
         incomeStackView.addArrangedSubview(incomeYenLabel)
         
         let expenseStackLabel = UILabel()
         expenseStackLabel.text = "金額"
-        expenseStackLabel.textColor = .white
+//        expenseStackLabel.textColor = .white
         contentView.addSubview(expenseStackLabel)
         expenseStackLabel.translatesAutoresizingMaskIntoConstraints = false
         expenseStackLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: expenseYenLabelWidth + 10).isActive = true
@@ -136,7 +140,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let incomeStackLabel = UILabel()
         incomeStackLabel.text = "金額"
-        incomeStackLabel.textColor = .white
+//        incomeStackLabel.textColor = .white
         contentView.addSubview(incomeStackLabel)
         incomeStackLabel.translatesAutoresizingMaskIntoConstraints = false
         incomeStackLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
@@ -145,7 +149,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let expenseCategoryLabel = UILabel()
         expenseCategoryLabel.text = "カテゴリー"
-        expenseCategoryLabel.textColor = .white
+//        expenseCategoryLabel.textColor = .white
         contentView.addSubview(expenseCategoryLabel)
         expenseCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
         expenseCategoryLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: expenseYenLabelWidth + 10).isActive = true
@@ -154,7 +158,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let incomeCategoryLabel = UILabel()
         incomeCategoryLabel.text = "カテゴリー"
-        incomeCategoryLabel.textColor = .white
+//        incomeCategoryLabel.textColor = .white
         contentView.addSubview(incomeCategoryLabel)
         incomeCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
         incomeCategoryLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
@@ -167,7 +171,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseCategoryTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: expenseYenLabelWidth + 10).isActive = true
         expenseCategoryTextField.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
         expenseCategoryTextField.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 75).isActive = true
-        expenseCategoryTextField.backgroundColor = .white
+//        expenseCategoryTextField.backgroundColor = .white
         expenseCategoryTextField.borderStyle = .roundedRect
         
         
@@ -176,7 +180,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeCategoryTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
         incomeCategoryTextField.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
         incomeCategoryTextField.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 75).isActive = true
-        incomeCategoryTextField.backgroundColor = .white
+//        incomeCategoryTextField.backgroundColor = .white
         incomeCategoryTextField.borderStyle = .roundedRect
         
         let expenseButton = UIButton()

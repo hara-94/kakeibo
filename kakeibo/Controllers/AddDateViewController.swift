@@ -12,12 +12,16 @@ class AddDateViewController: UIViewController {
     
     @IBOutlet weak var startText: UITextField!
     @IBOutlet weak var endText: UITextField!
+    @IBOutlet weak var addButton: UIButton!
+    
     var ADAccounts = [Account]()
     var datePicker: UIDatePicker = UIDatePicker()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addButton.layer.cornerRadius = 8
         //datepickerの各種設定
         datePicker.datePickerMode = .date
         let startToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))

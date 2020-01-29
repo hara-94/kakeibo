@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ndV-gR-cch">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MjD-zr-uWz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -8,48 +8,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Container View Controller-->
-        <scene sceneID="2OG-gs-xhw">
-            <objects>
-                <viewController storyboardIdentifier="containerVC" id="ndV-gR-cch" customClass="ContainerViewController" customModule="kakeibo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aqT-aI-YRb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Rb-dt-xkx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <connections>
-                                    <segue destination="MjD-zr-uWz" kind="embed" identifier="toDateListVC" id="09A-Nh-tdz"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67c-eC-K94">
-                                <rect key="frame" x="364" y="820" width="30" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="＋"/>
-                                <connections>
-                                    <action selector="addButtonOnPressed:" destination="ndV-gR-cch" eventType="touchUpInside" id="hxQ-JO-ESI"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="0Rb-dt-xkx" firstAttribute="trailing" secondItem="yZE-0J-Y2F" secondAttribute="trailing" id="8hE-Xf-wqg"/>
-                            <constraint firstItem="0Rb-dt-xkx" firstAttribute="leading" secondItem="yZE-0J-Y2F" secondAttribute="leading" id="EeO-Fi-cs7"/>
-                            <constraint firstItem="0Rb-dt-xkx" firstAttribute="top" secondItem="aqT-aI-YRb" secondAttribute="top" id="NpB-Gb-ARq"/>
-                            <constraint firstItem="yZE-0J-Y2F" firstAttribute="trailing" secondItem="67c-eC-K94" secondAttribute="trailing" constant="20" id="WU2-Az-7pY"/>
-                            <constraint firstAttribute="bottom" secondItem="0Rb-dt-xkx" secondAttribute="bottom" id="c9Q-xD-vMZ"/>
-                            <constraint firstItem="67c-eC-K94" firstAttribute="bottom" secondItem="yZE-0J-Y2F" secondAttribute="bottom" id="txU-Xz-zOC"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="yZE-0J-Y2F"/>
-                    </view>
-                    <connections>
-                        <segue destination="pl8-02-7gR" kind="show" identifier="toAddDateVC" id="NGb-iY-FDA"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MZP-Oo-XPL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-771" y="129"/>
-        </scene>
         <!--Date List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -76,9 +34,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="nbP-7K-hoB"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kq8-ag-0uM">
+                                <rect key="frame" x="134.5" y="112" width="145" height="30"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.69803921570000005" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="Qkk-lY-QOq"/>
+                                </constraints>
+                                <state key="normal" title="家計簿を追加する">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonOnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mo3-8e-MwI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Kq8-ag-0uM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ec-wE-6UE"/>
+                            <constraint firstItem="Kq8-ag-0uM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="Il0-0g-6rx"/>
                             <constraint firstAttribute="bottom" secondItem="yqS-8u-8EZ" secondAttribute="bottom" id="Lwj-cY-Uup"/>
                             <constraint firstItem="yqS-8u-8EZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="P7u-Ib-OV7"/>
                             <constraint firstItem="yqS-8u-8EZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="Tig-XB-NuE"/>
@@ -88,8 +61,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="KO0-TI-zPi"/>
                     <connections>
+                        <outlet property="addButton" destination="Kq8-ag-0uM" id="A6a-qt-HhJ"/>
                         <outlet property="tableView" destination="yqS-8u-8EZ" id="O9W-mQ-kYF"/>
                         <segue destination="7Cq-y5-jq6" kind="show" identifier="toTabBarVC" id="kHH-oa-hAw"/>
+                        <segue destination="pl8-02-7gR" kind="show" identifier="toAddDateVC" id="klz-4H-cYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -107,7 +82,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="P2P-n5-nuJ">
                                 <rect key="frame" x="35" y="117" width="344" height="34"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Y6-yg-Ren">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="追加するカテゴリー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Y6-yg-Ren">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -163,16 +138,33 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2wq-bB-5Ry"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="支出" id="9HU-sc-3k7"/>
+                    <tabBarItem key="tabBarItem" title="支出" image="expense" id="9HU-sc-3k7"/>
                     <navigationItem key="navigationItem" id="HOy-8K-EQZ"/>
                     <connections>
                         <outlet property="categoryText" destination="7Y6-yg-Ren" id="ekn-oY-ULN"/>
                         <outlet property="collectionView" destination="W0I-kA-nXh" id="e1N-Ne-O3w"/>
+                        <segue destination="ptf-3T-T52" kind="show" id="Shp-Fe-0Zi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gV0-AG-rgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3050.7246376811595" y="127.90178571428571"/>
+        </scene>
+        <!--Check Expense View Controller-->
+        <scene sceneID="ysF-LH-KrT">
+            <objects>
+                <viewController id="ptf-3T-T52" customClass="CheckExpenseViewController" customModule="kakeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mwg-Ww-RnQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Ij4-oA-L7s"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aJ0-r4-SPB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jIM-15-RQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4011.594202898551" y="128.57142857142856"/>
         </scene>
         <!--収入-->
         <scene sceneID="VHX-Qi-8pH">
@@ -185,7 +177,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RSD-Ez-Bqa">
                                 <rect key="frame" x="35" y="117" width="344" height="34"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xPF-XX-7Z0">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="追加するカテゴリー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xPF-XX-7Z0">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -240,7 +232,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rIe-33-Qc8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="収入" id="wYV-JV-kpX"/>
+                    <tabBarItem key="tabBarItem" title="収入" image="income" id="wYV-JV-kpX"/>
                     <connections>
                         <outlet property="collectionView" destination="yyL-Jy-9ZZ" id="IVP-gn-mEG"/>
                         <outlet property="incomeText" destination="xPF-XX-7Z0" id="01z-kg-fWe"/>
@@ -295,7 +287,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IKm-HP-bgV"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="収支" id="WZu-fb-b3B"/>
+                    <tabBarItem key="tabBarItem" title="収支" image="check" id="WZu-fb-b3B"/>
                     <connections>
                         <outlet property="collectionView" destination="c2h-bO-we8" id="jAX-XI-kmX"/>
                     </connections>
@@ -350,7 +342,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1CJ-Dp-FVO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="入力" id="a3Z-bv-92a"/>
+                    <tabBarItem key="tabBarItem" title="入力" image="add" id="a3Z-bv-92a"/>
                     <navigationItem key="navigationItem" id="baw-Eq-I9D"/>
                     <connections>
                         <outlet property="contentView" destination="MAX-19-WqZ" id="a5V-M3-hXW"/>
@@ -370,17 +362,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gX7-E3-kBw">
-                                <rect key="frame" x="20" y="64" width="36" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="xdS-xF-1zv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="×"/>
-                                <connections>
-                                    <action selector="backButtonOnPressed:" destination="pl8-02-7gR" eventType="touchUpInside" id="PV9-n8-82N"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SNN-lh-8O0">
                                 <rect key="frame" x="100" y="431" width="214" height="34"/>
                                 <subviews>
@@ -414,8 +395,14 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3T-5a-b1D">
-                                <rect key="frame" x="145.5" y="493" width="123" height="30"/>
-                                <state key="normal" title="の家計簿をつける"/>
+                                <rect key="frame" x="134.5" y="493" width="145" height="30"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.69803921568627447" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="tCW-MP-hUp"/>
+                                </constraints>
+                                <state key="normal" title="の家計簿をつける">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="addButtonOnPressed:" destination="pl8-02-7gR" eventType="touchUpInside" id="yqt-h5-xWz"/>
                                 </connections>
@@ -427,24 +414,23 @@
                             <constraint firstItem="vzz-Ci-Xyn" firstAttribute="trailing" secondItem="RFq-rh-lK0" secondAttribute="trailing" constant="100" id="B9Q-ba-ZU8"/>
                             <constraint firstItem="h3T-5a-b1D" firstAttribute="top" secondItem="SNN-lh-8O0" secondAttribute="bottom" constant="28" id="IWT-qC-7mJ"/>
                             <constraint firstItem="h3T-5a-b1D" firstAttribute="centerX" secondItem="lFW-ZN-PH3" secondAttribute="centerX" id="LQe-CK-aa5"/>
-                            <constraint firstItem="gX7-E3-kBw" firstAttribute="top" secondItem="vzz-Ci-Xyn" secondAttribute="top" constant="20" id="Lcx-Hj-4sb"/>
                             <constraint firstItem="RFq-rh-lK0" firstAttribute="leading" secondItem="vzz-Ci-Xyn" secondAttribute="leading" constant="100" id="WEw-BH-LsP"/>
                             <constraint firstItem="vzz-Ci-Xyn" firstAttribute="trailing" secondItem="SNN-lh-8O0" secondAttribute="trailing" constant="100" id="ihW-W5-pkE"/>
                             <constraint firstItem="SNN-lh-8O0" firstAttribute="leading" secondItem="vzz-Ci-Xyn" secondAttribute="leading" constant="100" id="kgF-nP-eig"/>
                             <constraint firstItem="SNN-lh-8O0" firstAttribute="top" secondItem="RFq-rh-lK0" secondAttribute="bottom" constant="29" id="oN1-qW-sss"/>
-                            <constraint firstItem="gX7-E3-kBw" firstAttribute="leading" secondItem="vzz-Ci-Xyn" secondAttribute="leading" constant="20" id="pn8-kQ-lCY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vzz-Ci-Xyn"/>
                     </view>
                     <navigationItem key="navigationItem" id="5cg-c8-dbU"/>
                     <connections>
+                        <outlet property="addButton" destination="h3T-5a-b1D" id="e1B-cw-93W"/>
                         <outlet property="endText" destination="flT-Sl-UsS" id="HCD-Zg-e4a"/>
                         <outlet property="startText" destination="k0e-eH-gbI" id="ZTb-ul-UAc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEz-Ij-6Z5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="863"/>
+            <point key="canvasLocation" x="1045" y="895"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="1gI-e3-46R">
@@ -487,4 +473,10 @@
             <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add" width="25" height="25"/>
+        <image name="check" width="25" height="25"/>
+        <image name="expense" width="25" height="25"/>
+        <image name="income" width="25" height="25"/>
+    </resources>
 </document>

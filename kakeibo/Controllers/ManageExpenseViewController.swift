@@ -19,8 +19,8 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
             
-        self.view.backgroundColor = Function.viewColor()
-        collectionView.backgroundColor = Function.viewColor()
+
+//        collectionView.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
         collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
         let cellLayout = UICollectionViewFlowLayout()
         cellLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -44,9 +44,13 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "clCell", for: indexPath) as! CategoryListCollectionViewCell
-        cell.titleLabel.textColor = .white
+        cell.layer.borderWidth = 1
+//        cell.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1).cgColor
+        cell.layer.borderColor = Function.buttonColor().cgColor
+        cell.layer.cornerRadius = 10
+        cell.backgroundColor = .white
         cell.titleLabel.text = MECategories[indexPath.row]
-        cell.backgroundColor = Function.cellColor()
+        cell.titleLabel.textColor = Function.buttonColor()
         return cell
     }
         

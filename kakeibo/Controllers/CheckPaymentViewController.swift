@@ -34,8 +34,6 @@ class CheckPaymentViewController: UIViewController {
         expenseTableView.register(UINib(nibName: "CheckPaymentTableViewCell", bundle: nil), forCellReuseIdentifier: "DLcell")
         incomeTableView.register(UINib(nibName: "CheckPaymentTableViewCell", bundle: nil), forCellReuseIdentifier: "DLcell")
         
-        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
-        collectionView.backgroundColor = Function.viewColor()
         collectionView.register(UINib(nibName: "CheckPaymentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cpCell")
         let cellLayout = UICollectionViewFlowLayout()
         cellLayout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
@@ -54,25 +52,40 @@ class CheckPaymentViewController: UIViewController {
         myView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
         myView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
         myView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-        myView.backgroundColor = .white
+//        myView.backgroundColor = .white
         myView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 190 - self.navigationController!.navigationBar.frame.height - tabBarController!.tabBar.frame.height).isActive = true
 //        myView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 2).isActive = true
         myView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 2).isActive = true
        
-        expenseTableView.backgroundColor = .red
+        let expenseTitleLabel = UILabel()
+        expenseTitleLabel.text = "支出"
+        myView.addSubview(expenseTitleLabel)
+        expenseTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        expenseTitleLabel.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
+        expenseTitleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        
+        expenseTableView.separatorStyle = .none
         myView.addSubview(expenseTableView)
         expenseTableView.translatesAutoresizingMaskIntoConstraints = false
-        expenseTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        expenseTableView.topAnchor.constraint(equalTo: self.myView.topAnchor).isActive = true
+        expenseTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 20).isActive = true
+        expenseTableView.topAnchor.constraint(equalTo: expenseTitleLabel.bottomAnchor, constant: 10).isActive = true
         expenseTableView.bottomAnchor.constraint(equalTo: self.myView.bottomAnchor).isActive = true
+        expenseTableView.leadingAnchor.constraint(equalTo: myView.leadingAnchor, constant: 10).isActive = true
         
-        incomeTableView.backgroundColor = .blue
+        let incomeTitleLabel = UILabel()
+        incomeTitleLabel.text = "収入"
+        myView.addSubview(incomeTitleLabel)
+        incomeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        incomeTitleLabel.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
+        incomeTitleLabel.centerXAnchor.constraint(equalTo: myView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
+        
+        incomeTableView.separatorStyle = .none
         myView.addSubview(incomeTableView)
         incomeTableView.translatesAutoresizingMaskIntoConstraints = false
-        incomeTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-        incomeTableView.topAnchor.constraint(equalTo: self.myView.topAnchor).isActive = true
+        incomeTableView.widthAnchor.constraint(equalToConstant: self.view.frame.width - 20).isActive = true
+        incomeTableView.topAnchor.constraint(equalTo: incomeTitleLabel.bottomAnchor, constant: 10).isActive = true
         incomeTableView.bottomAnchor.constraint(equalTo: self.myView.bottomAnchor).isActive = true
-        incomeTableView.trailingAnchor.constraint(equalTo: self.myView.trailingAnchor).isActive = true
+        incomeTableView.trailingAnchor.constraint(equalTo: self.myView.trailingAnchor, constant: -10).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,8 +94,8 @@ class CheckPaymentViewController: UIViewController {
         CPAccounts = Function.getAccounts()
         CPExpensePayments = CPAccounts[CPRowNumber].expensePayments
         CPIncomePayments = CPAccounts[CPRowNumber].incomePayments
-        self.expenseTableView.reloadData()
-        self.incomeTableView.reloadData()
+        expenseTableView.reloadData()
+        incomeTableView.reloadData()
         
         expenseTotalMoney = 0
         incomeTotalMoney = 0
@@ -100,6 +113,7 @@ class CheckPaymentViewController: UIViewController {
             }
             incomeTotalMoney = incomeTotalMoney + intMoney
         }
+        collectionView.reloadData()
     }
 
 }
@@ -111,15 +125,17 @@ extension CheckPaymentViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cpCell", for: indexPath) as! CheckPaymentCollectionViewCell
-        cell.backgroundColor = Function.cellColor()
-        cell.titleLabel.textColor = .white
-        cell.moneyLabel.textColor = .white
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1).cgColor
+        cell.layer.cornerRadius = 5
         if indexPath.item == 0 {
             cell.titleLabel.text = "支出"
-            cell.moneyLabel.text = String(expenseTotalMoney) + "円"
+            cell.moneyLabel.text = "-" +  String(expenseTotalMoney) + "円"
+            cell.moneyLabel.textColor = UIColor(red: 255/255, green: 80/255, blue: 0/255, alpha: 1)
         } else if indexPath.item == 1 {
             cell.titleLabel.text = "収入"
-            cell.moneyLabel.text = String(incomeTotalMoney) + "円"
+            cell.moneyLabel.text = "+" + String(incomeTotalMoney) + "円"
+            cell.moneyLabel.textColor = UIColor(red: 0/255, green: 100/255, blue: 255/255, alpha: 1)
         } else {
             cell.moneyLabel.text = String(incomeTotalMoney - expenseTotalMoney) + "円"
         }
@@ -151,6 +167,9 @@ extension CheckPaymentViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DLcell", for: indexPath) as! CheckPaymentTableViewCell
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1).cgColor
+        cell.layer.cornerRadius = 5
         switch tableView {
         case expenseTableView:
             cell.titleLabel.text = CPExpensePayments[indexPath.row].content
@@ -167,4 +186,35 @@ extension CheckPaymentViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert: UIAlertController = UIAlertController(title: "確認", message: "削除していいですか?", preferredStyle: .actionSheet)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        switch tableView {
+        case expenseTableView:
+            let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                self.CPExpensePayments.remove(at: indexPath.row)
+                self.CPAccounts[self.CPRowNumber].expensePayments.remove(at: indexPath.row)
+                Function.setAccounts(object: self.CPAccounts)
+                self.viewWillAppear(true)
+            }
+            alert.addAction(OKAction)
+            present(alert, animated: true, completion: nil)
+            
+        case incomeTableView:
+            let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                self.CPIncomePayments.remove(at: indexPath.row)
+                self.CPAccounts[self.CPRowNumber].incomePayments.remove(at: indexPath.row)
+                Function.setAccounts(object: self.CPAccounts)
+                self.viewWillAppear(true)
+            }
+            alert.addAction(OKAction)
+            present(alert, animated: true, completion: nil)
+            
+        default:
+            fatalError()
+        }
+    }
+    
 }
