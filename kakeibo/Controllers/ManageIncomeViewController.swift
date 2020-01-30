@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     
     
     @IBOutlet weak var categoryText: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     var MIAccounts = [Account]()
     var MIRowNumber: Int = 0
     var MICategories = [String]()
@@ -22,6 +23,7 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
         super.viewDidLoad()
         
         categoryText.delegate = self
+        gestureRecognizer.delegate = self
 
         collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
         let cellLayout = UICollectionViewFlowLayout()
@@ -86,6 +88,11 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
                 present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    
+    @IBAction func endEditing(_ sender: Any) {
+        categoryText.resignFirstResponder()
     }
     
 }

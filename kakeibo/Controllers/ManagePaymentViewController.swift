@@ -9,8 +9,6 @@
 import UIKit
 
 class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate {
-    
-    
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -36,6 +34,8 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeTextField.delegate = self
         expenseCategoryTextField.delegate = self
         incomeCategoryTextField.delegate = self
+        expenseTitleTextField.delegate = self
+        incomeTitleTextField.delegate = self
         gestureRecognizer.delegate = self
         
         
@@ -204,6 +204,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeTitleLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: 70).isActive = true
         
         expenseTitleTextField.borderStyle = .roundedRect
+        expenseTitleTextField.returnKeyType = .done
         expenseTitleTextField.placeholder = "(任意)"
         contentView.addSubview(expenseTitleTextField)
         expenseTitleTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -212,6 +213,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseTitleTextField.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: 100).isActive = true
         
         incomeTitleTextField.borderStyle = .roundedRect
+        incomeTitleTextField.returnKeyType = .done
         incomeTitleTextField.placeholder = "(任意)"
         contentView.addSubview(incomeTitleTextField)
         incomeTitleTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -287,6 +289,12 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        expenseTitleTextField.resignFirstResponder()
+        incomeTitleTextField.resignFirstResponder()
+        return true
+    }
+    
     @objc func expenseDone() {
         expenseCategoryTextField.endEditing(true)
     }
@@ -308,6 +316,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
                                 Function.setAccounts(object: MPAccounts)
                                 expenseTextField.text = ""
                                 expenseCategoryTextField.text = ""
+                                expenseTitleTextField.text = ""
                                 expenseTextField.endEditing(true)
                                 expenseCategoryTextField.endEditing(true)
                             } else {
@@ -360,6 +369,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
                                 Function.setAccounts(object: MPAccounts)
                                 incomeTextField.text = ""
                                 incomeCategoryTextField.text = ""
+                                incomeTitleTextField.text = ""
                                 incomeTextField.endEditing(true)
                                 incomeCategoryTextField.endEditing(true)
                             } else {

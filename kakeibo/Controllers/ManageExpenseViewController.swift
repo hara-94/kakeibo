@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var categoryText: UITextField!
+    @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     var MEAccounts = [Account]()
     var MERowNumber: Int = 2
     var MECategories = [String]()
@@ -20,6 +21,7 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
         super.viewDidLoad()
         
         categoryText.delegate = self
+        gestureRecognizer.delegate = self
         
         collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
         let cellLayout = UICollectionViewFlowLayout()
@@ -57,10 +59,6 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
         let cellSize = self.view.bounds.width / 3 - 20
         return CGSize(width: cellSize, height: cellSize)
     }
-        
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        categoryText.resignFirstResponder()
-    }
     
     @IBAction func addButtonOnPressed(_ sender: Any) {
         if let category = categoryText.text {
@@ -90,4 +88,9 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
             }
         }
     }
+    
+    @IBAction func endEditing(_ sender: UITapGestureRecognizer) {
+        categoryText.resignFirstResponder()
+    }
+    
 }

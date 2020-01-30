@@ -126,6 +126,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="W0I-kA-nXh" firstAttribute="trailing" secondItem="2wq-bB-5Ry" secondAttribute="trailing" id="3Zs-2h-U0r"/>
                             <constraint firstAttribute="bottom" secondItem="W0I-kA-nXh" secondAttribute="bottom" id="BDY-Mq-jkM"/>
@@ -137,16 +138,25 @@
                             <constraint firstItem="W0I-kA-nXh" firstAttribute="leading" secondItem="2wq-bB-5Ry" secondAttribute="leading" id="w45-GE-WKq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2wq-bB-5Ry"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Flt-Yl-tXL" appends="YES" id="Jsv-CS-Cby"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="支出" image="expense" id="9HU-sc-3k7"/>
                     <navigationItem key="navigationItem" id="HOy-8K-EQZ"/>
                     <connections>
                         <outlet property="categoryText" destination="7Y6-yg-Ren" id="ekn-oY-ULN"/>
                         <outlet property="collectionView" destination="W0I-kA-nXh" id="e1N-Ne-O3w"/>
+                        <outlet property="gestureRecognizer" destination="Flt-Yl-tXL" id="wn9-Ky-nBH"/>
                         <segue destination="ptf-3T-T52" kind="show" id="Shp-Fe-0Zi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gV0-AG-rgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Flt-Yl-tXL">
+                    <connections>
+                        <action selector="endEditing:" destination="T5G-zj-H73" id="JpP-Rc-dvM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3050.7246376811595" y="127.90178571428571"/>
         </scene>
@@ -221,6 +231,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yyL-Jy-9ZZ" firstAttribute="trailing" secondItem="rIe-33-Qc8" secondAttribute="trailing" id="7EM-83-UFj"/>
                             <constraint firstAttribute="bottom" secondItem="yyL-Jy-9ZZ" secondAttribute="bottom" id="7Fp-AC-ww0"/>
@@ -231,14 +242,23 @@
                             <constraint firstItem="rIe-33-Qc8" firstAttribute="trailing" secondItem="RSD-Ez-Bqa" secondAttribute="trailing" constant="35" id="z1j-3c-2vV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rIe-33-Qc8"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Dj4-tX-qwm" appends="YES" id="2uQ-x4-9Da"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="収入" image="income" id="wYV-JV-kpX"/>
                     <connections>
                         <outlet property="categoryText" destination="xPF-XX-7Z0" id="9Rv-0I-Yjd"/>
                         <outlet property="collectionView" destination="yyL-Jy-9ZZ" id="IVP-gn-mEG"/>
+                        <outlet property="gestureRecognizer" destination="Dj4-tX-qwm" id="Mil-Mo-RW0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMd-Kw-6JJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Dj4-tX-qwm">
+                    <connections>
+                        <action selector="endEditing:" destination="La3-qR-Jhi" id="G7b-sg-tkr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3050.7246376811595" y="827.67857142857144"/>
         </scene>
