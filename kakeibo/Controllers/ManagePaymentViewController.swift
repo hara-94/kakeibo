@@ -26,6 +26,8 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
     let incomeTextField = UITextField()
     let expenseCategoryTextField = UITextField()
     let incomeCategoryTextField = UITextField()
+    let expenseTitleTextField = UITextField()
+    let incomeTitleTextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +76,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
         expenseLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         expenseLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        expenseLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -130).isActive = true
+        expenseLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -160).isActive = true
         
         let incomeLabel = UILabel()
         incomeLabel.text = "収入"
@@ -85,7 +87,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeLabel.translatesAutoresizingMaskIntoConstraints = false
         incomeLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor).isActive = true
         incomeLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        incomeLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -130).isActive = true
+        incomeLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -160).isActive = true
         
 //        expenseTextField.backgroundColor = .white
         expenseTextField.textAlignment = .right
@@ -96,7 +98,6 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7).isActive = true
         expenseTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
                 
-//        incomeTextField.backgroundColor = .white
         incomeTextField.textAlignment = .right
         incomeTextField.borderStyle = .roundedRect
         incomeTextField.keyboardType = .numberPad
@@ -110,7 +111,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseStackView.addArrangedSubview(expenseTextField)
         expenseStackView.translatesAutoresizingMaskIntoConstraints = false
         expenseStackView.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        expenseStackView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -30).isActive = true
+        expenseStackView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -80).isActive = true
         expenseStackView.spacing = 10
         expenseStackView.alignment = .bottom
         
@@ -119,7 +120,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeStackView.addArrangedSubview(incomeTextField)
         incomeStackView.translatesAutoresizingMaskIntoConstraints = false
         incomeStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
-        incomeStackView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -30).isActive = true
+        incomeStackView.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -80).isActive = true
         incomeStackView.spacing = 5
         incomeStackView.alignment = .bottom
 
@@ -144,7 +145,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseStackLabel.translatesAutoresizingMaskIntoConstraints = false
         expenseStackLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: expenseYenLabelWidth + 10).isActive = true
         expenseStackLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        expenseStackLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -60).isActive = true
+        expenseStackLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -110).isActive = true
         
         let incomeStackLabel = UILabel()
         incomeStackLabel.text = "金額"
@@ -153,43 +154,72 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeStackLabel.translatesAutoresizingMaskIntoConstraints = false
         incomeStackLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
         incomeStackLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
-        incomeStackLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -60).isActive = true
+        incomeStackLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -110).isActive = true
         
         let expenseCategoryLabel = UILabel()
         expenseCategoryLabel.text = "カテゴリー"
-//        expenseCategoryLabel.textColor = .white
         contentView.addSubview(expenseCategoryLabel)
         expenseCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
         expenseCategoryLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: expenseYenLabelWidth + 10).isActive = true
         expenseCategoryLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        expenseCategoryLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 45).isActive = true
+        expenseCategoryLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -20).isActive = true
         
         let incomeCategoryLabel = UILabel()
         incomeCategoryLabel.text = "カテゴリー"
-//        incomeCategoryLabel.textColor = .white
         contentView.addSubview(incomeCategoryLabel)
         incomeCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
         incomeCategoryLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
         incomeCategoryLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
-        incomeCategoryLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 45).isActive = true
+        incomeCategoryLabel.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: -20).isActive = true
         
         
         contentView.addSubview(expenseCategoryTextField)
         expenseCategoryTextField.translatesAutoresizingMaskIntoConstraints = false
         expenseCategoryTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: expenseYenLabelWidth + 10).isActive = true
         expenseCategoryTextField.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        expenseCategoryTextField.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 75).isActive = true
+        expenseCategoryTextField.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 10).isActive = true
 //        expenseCategoryTextField.backgroundColor = .white
         expenseCategoryTextField.borderStyle = .roundedRect
         
-        
+        incomeCategoryTextField.borderStyle = .roundedRect
         contentView.addSubview(incomeCategoryTextField)
         incomeCategoryTextField.translatesAutoresizingMaskIntoConstraints = false
         incomeCategoryTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
         incomeCategoryTextField.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
-        incomeCategoryTextField.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 75).isActive = true
-//        incomeCategoryTextField.backgroundColor = .white
-        incomeCategoryTextField.borderStyle = .roundedRect
+        incomeCategoryTextField.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 10).isActive = true
+        
+        
+        let expenseTitleLabel = UILabel()
+        expenseTitleLabel.text = "メモ"
+        contentView.addSubview(expenseTitleLabel)
+        expenseTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        expenseTitleLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
+        expenseTitleLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+        expenseTitleLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: 70).isActive = true
+        
+        let incomeTitleLabel = UILabel()
+        incomeTitleLabel.text = "メモ"
+        contentView.addSubview(incomeTitleLabel)
+        incomeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        incomeTitleLabel.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
+        incomeTitleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
+        incomeTitleLabel.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: 70).isActive = true
+        
+        expenseTitleTextField.borderStyle = .roundedRect
+        expenseTitleTextField.placeholder = "(任意)"
+        contentView.addSubview(expenseTitleTextField)
+        expenseTitleTextField.translatesAutoresizingMaskIntoConstraints = false
+        expenseTitleTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
+        expenseTitleTextField.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        expenseTitleTextField.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: 100).isActive = true
+        
+        incomeTitleTextField.borderStyle = .roundedRect
+        incomeTitleTextField.placeholder = "(任意)"
+        contentView.addSubview(incomeTitleTextField)
+        incomeTitleTextField.translatesAutoresizingMaskIntoConstraints = false
+        incomeTitleTextField.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.7, constant: 5 + incomeYenLabelWidth).isActive = true
+        incomeTitleTextField.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
+        incomeTitleTextField.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: 100).isActive = true
         
         let expenseButton = UIButton()
         expenseButton.setTitle("支出を入力する", for: .normal)
@@ -200,7 +230,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         expenseButton.translatesAutoresizingMaskIntoConstraints = false
         expenseButton.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.6).isActive = true
         expenseButton.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
-        expenseButton.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 130).isActive = true
+        expenseButton.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 150).isActive = true
         
         let incomeButton = UIButton()
         incomeButton.setTitle("収入を入力する", for: .normal)
@@ -211,7 +241,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         incomeButton.translatesAutoresizingMaskIntoConstraints = false
         incomeButton.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor, multiplier: 0.6).isActive = true
         incomeButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
-        incomeButton.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 130).isActive = true
+        incomeButton.centerYAnchor.constraint(equalTo: self.scrollView.centerYAnchor, constant: 150).isActive = true
         //view did load ここまで
     }
     
@@ -274,7 +304,8 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
                     if expenseCategory != "" {
                         if MPExpenseCategories.contains(expenseCategory) {
                             if Int(expenseText) != nil {
-                                let payment = Payment(content: expenseCategory, money: expenseText)
+                                let title = expenseTitleTextField.text
+                                let payment = Payment(content: expenseCategory, money: expenseText, title: title!)
                                 MPAccounts[MPRowNumber].expensePayments.append(payment)
                                 Function.setAccounts(object: MPAccounts)
                                 expenseTextField.text = ""
@@ -325,7 +356,8 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
                     if incomeCategory != "" {
                         if MPIncomeCategories.contains(incomeCategory) {
                             if Int(incomeText) != nil {
-                                let payment = Payment(content: incomeCategory, money: incomeText)
+                                let title = incomeTitleTextField.text
+                                let payment = Payment(content: incomeCategory, money: incomeText, title: title!)
                                 MPAccounts[MPRowNumber].incomePayments.append(payment)
                                 Function.setAccounts(object: MPAccounts)
                                 incomeTextField.text = ""
@@ -370,8 +402,12 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     
     @IBAction func endEditing(_ sender: UITapGestureRecognizer) {
-        print("tapped")
         self.expenseTextField.endEditing(true)
+        self.expenseCategoryTextField.endEditing(true)
+        self.expenseTitleTextField.endEditing(true)
+        self.incomeTextField.endEditing(true)
+        self.incomeCategoryTextField.endEditing(true)
+        self.incomeTitleTextField.endEditing(true)
     }
     
 }

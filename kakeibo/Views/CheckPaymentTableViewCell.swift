@@ -10,7 +10,8 @@ import UIKit
 
 class CheckPaymentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
 }

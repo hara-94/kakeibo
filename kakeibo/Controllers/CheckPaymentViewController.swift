@@ -173,11 +173,13 @@ extension CheckPaymentViewController: UITableViewDelegate, UITableViewDataSource
         cell.layer.cornerRadius = 5
         switch tableView {
         case expenseTableView:
-            cell.titleLabel.text = CPExpensePayments[indexPath.row].content
+            cell.contentLabel.text = CPExpensePayments[indexPath.row].content
             cell.moneyLabel.text = CPExpensePayments[indexPath.row].money + "円"
+            cell.titleLabel.text = CPExpensePayments[indexPath.row].title
         case incomeTableView:
-            cell.titleLabel.text = CPIncomePayments[indexPath.row].content
+            cell.contentLabel.text = CPIncomePayments[indexPath.row].content
             cell.moneyLabel.text = CPIncomePayments[indexPath.row].money + "円"
+            cell.titleLabel.text = CPIncomePayments[indexPath.row].title
         default:
             fatalError()
         }
