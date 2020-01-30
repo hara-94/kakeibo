@@ -234,8 +234,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="収入" image="income" id="wYV-JV-kpX"/>
                     <connections>
+                        <outlet property="categoryText" destination="xPF-XX-7Z0" id="9Rv-0I-Yjd"/>
                         <outlet property="collectionView" destination="yyL-Jy-9ZZ" id="IVP-gn-mEG"/>
-                        <outlet property="incomeText" destination="xPF-XX-7Z0" id="01z-kg-fWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMd-Kw-6JJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

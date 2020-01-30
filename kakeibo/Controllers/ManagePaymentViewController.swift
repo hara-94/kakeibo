@@ -69,8 +69,6 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         let expenseLabel = UILabel()
         expenseLabel.text = "支出"
         expenseLabel.textAlignment = .center
-        expenseLabel.layer.borderWidth = 2
-        expenseLabel.layer.borderColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 1).cgColor
         contentView.addSubview(expenseLabel)
         expenseLabel.translatesAutoresizingMaskIntoConstraints = false
         expenseLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true

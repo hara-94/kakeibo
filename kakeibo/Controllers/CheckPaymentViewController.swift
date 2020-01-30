@@ -26,6 +26,10 @@ class CheckPaymentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.myView.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
+        expenseTableView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0)
+        incomeTableView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0)
+        
         expenseTableView.delegate = self
         expenseTableView.dataSource = self
         incomeTableView.delegate = self
@@ -53,7 +57,7 @@ class CheckPaymentViewController: UIViewController {
         myView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
         myView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
 //        myView.backgroundColor = .white
-        myView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 190 - self.navigationController!.navigationBar.frame.height - tabBarController!.tabBar.frame.height).isActive = true
+        myView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 200 - self.navigationController!.navigationBar.frame.height - tabBarController!.tabBar.frame.height).isActive = true
 //        myView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 2).isActive = true
         myView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 2).isActive = true
        
@@ -61,7 +65,7 @@ class CheckPaymentViewController: UIViewController {
         expenseTitleLabel.text = "支出"
         myView.addSubview(expenseTitleLabel)
         expenseTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        expenseTitleLabel.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
+        expenseTitleLabel.topAnchor.constraint(equalTo: myView.topAnchor, constant: 10).isActive = true
         expenseTitleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
         expenseTableView.separatorStyle = .none
@@ -76,7 +80,7 @@ class CheckPaymentViewController: UIViewController {
         incomeTitleLabel.text = "収入"
         myView.addSubview(incomeTitleLabel)
         incomeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        incomeTitleLabel.topAnchor.constraint(equalTo: myView.topAnchor).isActive = true
+        incomeTitleLabel.topAnchor.constraint(equalTo: myView.topAnchor, constant: 10).isActive = true
         incomeTitleLabel.centerXAnchor.constraint(equalTo: myView.centerXAnchor, constant: self.view.frame.width / 2).isActive = true
         
         incomeTableView.separatorStyle = .none
@@ -139,6 +143,7 @@ extension CheckPaymentViewController: UICollectionViewDelegate, UICollectionView
         } else {
             cell.titleLabel.text = "収支"
             cell.moneyLabel.text = String(incomeTotalMoney - expenseTotalMoney) + "円"
+            cell.moneyLabel.textColor = .black
         }
         return cell
     }
@@ -192,7 +197,9 @@ extension CheckPaymentViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert: UIAlertController = UIAlertController(title: "確認", message: "削除していいですか?", preferredStyle: .actionSheet)
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel) { (UIAlertAction) in
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
         alert.addAction(cancelAction)
         switch tableView {
         case expenseTableView:
@@ -211,6 +218,7 @@ extension CheckPaymentViewController: UITableViewDelegate, UITableViewDataSource
                 self.CPAccounts[self.CPRowNumber].incomePayments.remove(at: indexPath.row)
                 Function.setAccounts(object: self.CPAccounts)
                 self.viewWillAppear(true)
+                self.incomeTableView.deselectRow(at: indexPath, animated: true)
             }
             alert.addAction(OKAction)
             present(alert, animated: true, completion: nil)

@@ -11,7 +11,8 @@ import UIKit
 class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     
-    @IBOutlet weak var incomeText: UITextField!
+    
+    @IBOutlet weak var categoryText: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     var MIAccounts = [Account]()
     var MIRowNumber: Int = 0
@@ -20,7 +21,7 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        incomeText.delegate = self
+        categoryText.delegate = self
 
         collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
         let cellLayout = UICollectionViewFlowLayout()
@@ -55,20 +56,34 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        incomeText.resignFirstResponder()
+        categoryText.resignFirstResponder()
     }
     
     @IBAction func addButtonOnPressed(_ sender: Any) {
-        if let income = incomeText.text {
+        if let income = categoryText.text {
             if income != "" {
                 if !MICategories.contains(income) {
                     MIAccounts[MIRowNumber].incomeCategory.append(income)
                     Function.setAccounts(object: MIAccounts)
                     MICategories = MIAccounts[MIRowNumber].incomeCategory
-                    incomeText.text = ""
+                    categoryText.text = ""
                     collectionView.reloadData()
-                    incomeText.endEditing(true)
+                    categoryText.endEditing(true)
+                } else {
+                    //登録済みの場合
+                    let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "この項目は登録済みです", preferredStyle: .alert)
+                    let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                        self.categoryText.text = ""
+                    }
+                    alert.addAction(OKAction)
+                    present(alert, animated: true, completion: nil)
                 }
+            } else {
+                //文字列が空
+                let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "カテゴリー名を記入してください", preferredStyle: .alert)
+                let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(OKAction)
+                present(alert, animated: true, completion: nil)
             }
         }
     }

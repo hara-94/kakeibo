@@ -74,7 +74,19 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
                     categoryText.endEditing(true)
                 } else {
                     //登録済みの場合
+                    let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "この項目は登録済みです", preferredStyle: .alert)
+                    let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default) { (UIAlertAction) in
+                        self.categoryText.text = ""
+                    }
+                    alert.addAction(OKAction)
+                    present(alert, animated: true, completion: nil)
                 }
+            } else {
+                //文字列が空
+                let alert: UIAlertController = UIAlertController(title: "追加エラー", message: "カテゴリー名を記入してください", preferredStyle: .alert)
+                let OKAction: UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(OKAction)
+                present(alert, animated: true, completion: nil)
             }
         }
     }
