@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet var gestureRecognizer: UITapGestureRecognizer!
     var MPAccounts = [Account]()
     var MPRowNumber: Int = 0
     var MPExpenseCategories = [String]()
@@ -28,13 +29,20 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 50/255, alpha: 1)
+        
+        expenseTextField.delegate = self
+        incomeTextField.delegate = self
+        expenseCategoryTextField.delegate = self
+        incomeCategoryTextField.delegate = self
+        gestureRecognizer.delegate = self
+        
+        
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.layer.cornerRadius = 20
         scrollView.layer.borderColor = Function.buttonColor().cgColor
         scrollView.layer.borderWidth = 2
+        scrollView.keyboardDismissMode = .onDrag
         
         expensePickerView.delegate = self
         expensePickerView.dataSource = self
@@ -359,7 +367,13 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
             }
         }
     }
-
+    
+    
+    @IBAction func endEditing(_ sender: UITapGestureRecognizer) {
+        print("tapped")
+        self.expenseTextField.endEditing(true)
+    }
+    
 }
 
 extension ManagePaymentViewController: UIScrollViewDelegate {

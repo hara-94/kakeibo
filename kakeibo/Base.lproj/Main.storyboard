@@ -333,6 +333,7 @@
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1CJ-Dp-FVO" firstAttribute="trailing" secondItem="3VC-wb-VFN" secondAttribute="trailing" id="5KM-s0-wes"/>
                             <constraint firstItem="syT-zg-544" firstAttribute="centerX" secondItem="OZD-od-7qa" secondAttribute="centerX" id="OGZ-oF-Mg7"/>
@@ -341,16 +342,25 @@
                             <constraint firstItem="3VC-wb-VFN" firstAttribute="leading" secondItem="1CJ-Dp-FVO" secondAttribute="leading" id="wWr-fV-Ln5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1CJ-Dp-FVO"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="q8t-fk-5ID" appends="YES" id="EfF-zN-8Cs"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="入力" image="add" id="a3Z-bv-92a"/>
                     <navigationItem key="navigationItem" id="baw-Eq-I9D"/>
                     <connections>
                         <outlet property="contentView" destination="MAX-19-WqZ" id="a5V-M3-hXW"/>
+                        <outlet property="gestureRecognizer" destination="q8t-fk-5ID" id="KFh-vA-dBv"/>
                         <outlet property="pageControl" destination="syT-zg-544" id="4d0-ED-ixZ"/>
                         <outlet property="scrollView" destination="3VC-wb-VFN" id="3th-AU-MIP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pK1-Hd-DRA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="q8t-fk-5ID">
+                    <connections>
+                        <action selector="endEditing:" destination="pPg-Ow-9Ov" id="KEQ-70-KWz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3050.7246376811595" y="-633.48214285714278"/>
         </scene>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
     
     
     @IBOutlet weak var incomeText: UITextField!
@@ -19,6 +19,8 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        incomeText.delegate = self
 
         collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
         let cellLayout = UICollectionViewFlowLayout()
@@ -52,6 +54,9 @@ class ManageIncomeViewController: UIViewController, UICollectionViewDelegate, UI
         return CGSize(width: cellSize, height: cellSize)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        incomeText.resignFirstResponder()
+    }
     
     @IBAction func addButtonOnPressed(_ sender: Any) {
         if let income = incomeText.text {

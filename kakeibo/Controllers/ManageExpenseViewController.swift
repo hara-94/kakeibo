@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var categoryText: UITextField!
@@ -18,7 +18,9 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        categoryText.delegate = self
+        
         collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
         let cellLayout = UICollectionViewFlowLayout()
         cellLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -56,7 +58,10 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
         return CGSize(width: cellSize, height: cellSize)
     }
         
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        categoryText.resignFirstResponder()
+    }
+    
     @IBAction func addButtonOnPressed(_ sender: Any) {
         if let category = categoryText.text {
             if category != "" {
