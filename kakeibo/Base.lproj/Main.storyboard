@@ -148,7 +148,6 @@
                         <outlet property="categoryText" destination="7Y6-yg-Ren" id="ekn-oY-ULN"/>
                         <outlet property="collectionView" destination="W0I-kA-nXh" id="e1N-Ne-O3w"/>
                         <outlet property="gestureRecognizer" destination="Flt-Yl-tXL" id="wn9-Ky-nBH"/>
-                        <segue destination="ptf-3T-T52" kind="show" identifier="toCheckExpenseVC" id="Shp-Fe-0Zi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gV0-AG-rgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -159,22 +158,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3050.7246376811595" y="127.90178571428571"/>
-        </scene>
-        <!--Check Expense View Controller-->
-        <scene sceneID="ysF-LH-KrT">
-            <objects>
-                <viewController id="ptf-3T-T52" customClass="CheckExpenseViewController" customModule="kakeibo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mwg-Ww-RnQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Ij4-oA-L7s"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="aJ0-r4-SPB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jIM-15-RQ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4011.594202898551" y="128.57142857142856"/>
         </scene>
         <!--収入-->
         <scene sceneID="VHX-Qi-8pH">

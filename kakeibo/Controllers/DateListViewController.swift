@@ -41,11 +41,7 @@ class DateListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DLcell", for: indexPath) as! DateListTableViewCell
         cell.startLabel.text = DLAccounts[indexPath.row].startDate
-//        cell.startLabel.textColor = .white
         cell.endLabel.text = DLAccounts[indexPath.row].endDate
-//        cell.endLabel.textColor = .white
-//        cell.moneyLabel.textColor = .white
-//        cell.backgroundColor = Function.viewColor()
         DLExpenseTotalMoney = 0
         DLIncomeTotalMoney = 0
         for payment in DLAccounts[indexPath.row].expensePayments {
