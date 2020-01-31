@@ -56,9 +56,7 @@ class CheckPaymentViewController: UIViewController {
         myView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
         myView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
         myView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-//        myView.backgroundColor = .white
         myView.heightAnchor.constraint(equalToConstant: self.view.frame.height - 200 - self.navigationController!.navigationBar.frame.height - tabBarController!.tabBar.frame.height).isActive = true
-//        myView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 2).isActive = true
         myView.widthAnchor.constraint(equalToConstant: self.view.frame.width * 2).isActive = true
        
         let expenseTitleLabel = UILabel()

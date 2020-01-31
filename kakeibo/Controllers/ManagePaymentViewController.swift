@@ -247,6 +247,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         if !MPExpenseCategories.isEmpty {
             expenseCategoryTextField.text = MPExpenseCategories[0]
+            expenseCategoryTextField.isEnabled = true
         } else {
             expenseCategoryTextField.text = "カテゴリーが登録されていません"
             expenseCategoryTextField.isEnabled = false
@@ -254,6 +255,7 @@ class ManagePaymentViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         if !MPIncomeCategories.isEmpty {
             incomeCategoryTextField.text = MPIncomeCategories[0]
+            incomeCategoryTextField.isEnabled = true
         } else {
             incomeCategoryTextField.text = "カテゴリーが登録されていません"
             incomeCategoryTextField.isEnabled = false

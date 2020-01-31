@@ -16,6 +16,9 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
     var MEAccounts = [Account]()
     var MERowNumber: Int = 2
     var MECategories = [String]()
+    var MEExpensePayments = [Payment]()
+    var MEInfo = [String: Any]()
+    var METitle: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,8 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
         categoryText.delegate = self
         gestureRecognizer.delegate = self
         
-        collectionView.register(UINib(nibName: "CategoryListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "clCell")
+        collectionView.register(UINib(nibName: "ManageExpenseCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "meCell")
+        collectionView.delegate = self
         let cellLayout = UICollectionViewFlowLayout()
         cellLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         collectionView.collectionViewLayout = cellLayout
@@ -36,7 +40,10 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
             
         MECategories.removeAll()
         MECategories = MEAccounts[MERowNumber].expenseCategory
+        MEExpensePayments = MEAccounts[MERowNumber].expensePayments
         collectionView.reloadData()
+        
+        gestureRecognizer.cancelsTouchesInView = false
     }
         
 
@@ -45,13 +52,23 @@ class ManageExpenseViewController: UIViewController, UICollectionViewDelegate, U
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "clCell", for: indexPath) as! CategoryListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "meCell", for: indexPath) as! ManageExpenseCollectionViewCell
         cell.layer.borderWidth = 1
         cell.layer.borderColor = Function.buttonColor().cgColor
         cell.layer.cornerRadius = 10
         cell.backgroundColor = .white
-        cell.titleLabel.text = MECategories[indexPath.row]
+        let title = MECategories[indexPath.row]
+        cell.titleLabel.text = title
         cell.titleLabel.textColor = Function.buttonColor()
+        var totalMoney: Int = 0
+        for payment in MEExpensePayments {
+            if payment.content == title {
+                if let intMoney = Int(payment.money) {
+                    totalMoney = totalMoney + intMoney
+                }
+            }
+        }
+        cell.moneyLabel.text = String(totalMoney) + "円"
         return cell
     }
         

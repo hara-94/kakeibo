@@ -32,7 +32,8 @@
 		327D62CC23E073C200A1A452 /* CheckPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D62CA23E073C200A1A452 /* CheckPaymentTableViewCell.swift */; };
 		327D62CD23E073C200A1A452 /* CheckPaymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D62CB23E073C200A1A452 /* CheckPaymentTableViewCell.xib */; };
 		327D62DA23E182B300A1A452 /* CheckExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D62D923E182B300A1A452 /* CheckExpenseViewController.swift */; };
-		327D62DC23E2875E00A1A452 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D62DB23E2875E00A1A452 /* UIViewExtension.swift */; };
+		327D62DF23E40DD700A1A452 /* ManageExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327D62DD23E40DD700A1A452 /* ManageExpenseCollectionViewCell.swift */; };
+		327D62E023E40DD700A1A452 /* ManageExpenseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 327D62DE23E40DD700A1A452 /* ManageExpenseCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +64,8 @@
 		327D62CA23E073C200A1A452 /* CheckPaymentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		327D62CB23E073C200A1A452 /* CheckPaymentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckPaymentTableViewCell.xib; sourceTree = "<group>"; };
 		327D62D923E182B300A1A452 /* CheckExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckExpenseViewController.swift; sourceTree = "<group>"; };
-		327D62DB23E2875E00A1A452 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		327D62DD23E40DD700A1A452 /* ManageExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		327D62DE23E40DD700A1A452 /* ManageExpenseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageExpenseCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,8 @@
 				327D62C723E03BD500A1A452 /* CheckPaymentCollectionViewCell.xib */,
 				327D62CA23E073C200A1A452 /* CheckPaymentTableViewCell.swift */,
 				327D62CB23E073C200A1A452 /* CheckPaymentTableViewCell.xib */,
+				327D62DD23E40DD700A1A452 /* ManageExpenseCollectionViewCell.swift */,
+				327D62DE23E40DD700A1A452 /* ManageExpenseCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,7 +158,6 @@
 		327D62D623E17E4800A1A452 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				327D62DB23E2875E00A1A452 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				327B925F23DC0850007C5511 /* LaunchScreen.storyboard in Resources */,
 				327B925C23DC0850007C5511 /* Assets.xcassets in Resources */,
 				327D62CD23E073C200A1A452 /* CheckPaymentTableViewCell.xib in Resources */,
+				327D62E023E40DD700A1A452 /* ManageExpenseCollectionViewCell.xib in Resources */,
 				327B925A23DC084A007C5511 /* Main.storyboard in Resources */,
 				327B926D23DC0A97007C5511 /* DateListTableViewCell.xib in Resources */,
 				327D62BE23DFED2800A1A452 /* CategoryListCollectionViewCell.xib in Resources */,
@@ -247,11 +251,11 @@
 				327D62C823E03BD500A1A452 /* CheckPaymentCollectionViewCell.swift in Sources */,
 				327D62C323E021E700A1A452 /* ManageExpenseViewController.swift in Sources */,
 				327B928523DEF95E007C5511 /* Payment.swift in Sources */,
-				327D62DC23E2875E00A1A452 /* UIViewExtension.swift in Sources */,
 				327B928323DD566D007C5511 /* CheckPaymentViewController.swift in Sources */,
 				327D62C523E021F300A1A452 /* ManageIncomeViewController.swift in Sources */,
 				327B926C23DC0A97007C5511 /* DateListTableViewCell.swift in Sources */,
 				327B927523DC2F94007C5511 /* Account.swift in Sources */,
+				327D62DF23E40DD700A1A452 /* ManageExpenseCollectionViewCell.swift in Sources */,
 				327B927723DC30F1007C5511 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

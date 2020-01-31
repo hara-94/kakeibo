@@ -148,7 +148,7 @@
                         <outlet property="categoryText" destination="7Y6-yg-Ren" id="ekn-oY-ULN"/>
                         <outlet property="collectionView" destination="W0I-kA-nXh" id="e1N-Ne-O3w"/>
                         <outlet property="gestureRecognizer" destination="Flt-Yl-tXL" id="wn9-Ky-nBH"/>
-                        <segue destination="ptf-3T-T52" kind="show" id="Shp-Fe-0Zi"/>
+                        <segue destination="ptf-3T-T52" kind="show" identifier="toCheckExpenseVC" id="Shp-Fe-0Zi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gV0-AG-rgt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
