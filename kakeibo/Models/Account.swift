@@ -6,7 +6,7 @@
 //  Copyright © 2020 原ひかる. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Account: NSObject, NSCoding {
     
